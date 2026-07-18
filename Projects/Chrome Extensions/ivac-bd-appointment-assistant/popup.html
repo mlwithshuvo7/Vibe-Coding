@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Automation Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🇧🇩 IVAC BD Assistant</h1>
+      <p class="subtitle">Tourist Visa Appointment Automation</p>
+    </div>
+
+    <div class="status-section">
+      <div class="status-indicator">
+        <span class="status-dot" id="statusDot"></span>
+        <span class="status-text" id="statusText">Ready</span>
+      </div>
+      <div class="current-step" id="currentStep">Current Step: Home</div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-group">
+        <label for="phoneNumber">📱 Phone Number *</label>
+        <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required>
+      </div>
+
+      <div class="input-group">
+        <label for="password">🔒 Password *</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+
+      <div class="input-group">
+        <label for="pdfFile">📄 PDF Document *</label>
+        <input type="file" id="pdfFile" accept=".pdf" required>
+        <p class="file-info" id="fileInfo">No file selected</p>
+      </div>
+
+      <div class="input-group">
+        <label for="preferredMission">🏛️ Preferred Mission (Optional)</label>
+        <select id="preferredMission">
+          <option value="">Select Mission</option>
+          <option value="dhaka">Dhaka</option>
+          <option value="chittagong">Chittagong</option>
+          <option value="sylhet">Sylhet</option>
+          <option value="rajshahi">Rajshahi</option>
+          <option value="khulna">Khulna</option>
+          <option value="jessore">Jessore</option>
+          <option value="brahmanbaria">Brahmanbaria</option>
+          <option value="rangpur">Rangpur</option>
+          <option value="barisal">Barisal</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="preferredCenter">📍 Preferred IVAC Center (Optional)</label>
+        <select id="preferredCenter">
+          <option value="">Select Center</option>
+          <option value="ivac_dhaka">IVAC Dhaka (Gulshan)</option>
+          <option value="ivac_dhaka_uttara">IVAC Dhaka (Uttara)</option>
+          <option value="ivac_chittagong">IVAC Chittagong</option>
+          <option value="ivac_sylhet">IVAC Sylhet</option>
+          <option value="ivac_rajshahi">IVAC Rajshahi</option>
+          <option value="ivac_khulna">IVAC Khulna</option>
+          <option value="ivac_jessore">IVAC Jessore</option>
+          <option value="ivac_brahmanbaria">IVAC Brahmanbaria</option>
+          <option value="ivac_rangpur">IVAC Rangpur</option>
+          <option value="ivac_barisal">IVAC Barisal</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="preferredDate">📅 Preferred Date (Optional)</label>
+        <input type="date" id="preferredDate">
+      </div>
+
+      <div class="input-group">
+        <label for="preferredTime">⏰ Preferred Time (Optional)</label>
+        <select id="preferredTime">
+          <option value="">Select Time</option>
+          <option value="morning">Morning (9AM - 12PM)</option>
+          <option value="afternoon">Afternoon (12PM - 4PM)</option>
+          <option value="evening">Evening (4PM - 6PM)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="button-section">
+      <button id="saveBtn" class="btn btn-primary">💾 Save Configuration</button>
+      <button id="testFillBtn" class="btn btn-info">🧪 Test Form Fill</button>
+      <button id="testDateTimeBtn" class="btn btn-warning">📅 Test Date/Time Detection</button>
+      <button id="startBtn" class="btn btn-success">🚀 Start Automation</button>
+      <button id="stopBtn" class="btn btn-danger" disabled>⏹️ Stop</button>
+      <button id="resetBtn" class="btn btn-secondary">🔄 Reset</button>
+    </div>
+
+    <div class="debug-section" id="debugSection" style="display: none;">
+      <h3>🔍 Date/Time Detection Debug</h3>
+      <div class="debug-info">
+        <div class="debug-item">
+          <strong>Dates Found:</strong> <span id="datesFound">0</span>
+        </div>
+        <div class="debug-item">
+          <strong>Time Slots Found:</strong> <span id="timesFound">0</span>
+        </div>
+        <div class="debug-item">
+          <strong>Current Page:</strong> <span id="currentPage">Unknown</span>
+        </div>
+      </div>
+      <div class="debug-elements">
+        <h4>Detected Date Elements:</h4>
+        <div id="dateElements" class="element-list"></div>
+      </div>
+      <div class="debug-elements">
+        <h4>Detected Time Elements:</h4>
+        <div id="timeElements" class="element-list"></div>
+      </div>
+    </div>
+
+    <div class="logs-section">
+      <h3>📋 Activity Log</h3>
+      <div class="logs" id="logs"></div>
+    </div>
+
+    <div class="suggestions-section" id="suggestionsSection" style="display: none;">
+      <h3>💡 Suggestions</h3>
+      <div class="suggestions" id="suggestions"></div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
